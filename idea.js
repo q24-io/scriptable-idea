@@ -43,3 +43,4 @@ async function loadItem() {
   let req = new Request(url)
   let json = await req.loadJSON()
   return json
+}
