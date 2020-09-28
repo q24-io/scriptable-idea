@@ -6,4 +6,4 @@
 3. 复制 idea.js 里的代码到你刚创建的 script 里
 4. 在桌面创建小组件
 
-[](https://tva1.sinaimg.cn/large/007S8ZIlly1gj6pgib3ouj30n01ds0w2.jpg)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gj6pgib3ouj30n01ds0w2.jpg)
