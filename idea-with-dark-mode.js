@@ -2,7 +2,7 @@ let item = await loadItem()
 let widget = await createWidget(item)
 
 if (!config.runsInWidget) {
-  await widget.presentMedium()
+  await widget.presentLarge()
 }
 
 Script.setWidget(widget)
