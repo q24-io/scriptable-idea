@@ -15,23 +15,23 @@ async function createWidget(item) {
   w.addSpacer(4)
 
   let titleTxt = w.addText(item.idea)
-  titleTxt.font = Font.boldSystemFont(14)
+  titleTxt.font = Font.mediumSystemFont(14)
   w.addSpacer(8)
 
   let authorTxt = w.addText(item.author)
-  authorTxt.font = Font.mediumSystemFont(12)
+  authorTxt.font = Font.lightRoundedSystemFont(12)
   authorTxt.textOpacity = 0.9
   authorTxt.rightAlignText()
   w.addSpacer(2)
 
   let introTxt = w.addText(item.intro)
-  introTxt.font = Font.mediumSystemFont(12)
+  introTxt.font = Font.lightRoundedSystemFont(12)
   introTxt.textOpacity = 0.9
   introTxt.rightAlignText()
   w.addSpacer(8)
 
-  let curatorText = w.addText("由 " + item.curator + " 提供")
-  curatorText.font = Font.mediumSystemFont(10)
+  let curatorText = w.addText("内容由 " + item.curator + " 提供")
+  curatorText.font = Font.boldSystemFont(10)
   curatorText.textOpacity = 0.5
   curatorText.rightAlignText()
 
@@ -51,6 +51,7 @@ async function createWidget(item) {
     curatorText.textColor = Color.darkGray()
   }
   w.url = item.url
+
   return w
 }
 
