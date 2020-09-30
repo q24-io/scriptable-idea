@@ -15,7 +15,11 @@ async function createWidget(item) {
   w.addSpacer(4)
 
   let titleTxt = w.addText(item.idea)
-  titleTxt.font = Font.regularSystemFont(16)
+  let fontSize = 16
+  if (item.idea.length > 30) {
+    fontSize = fontSize - 3
+  }
+  titleTxt.font = Font.regularSystemFont(fontSize)
   w.addSpacer(8)
 
   let authorTxt = w.addText(item.author)

@@ -22,7 +22,11 @@ async function createWidget(item, gif) {
   w.addSpacer(4)
 
   let titleTxt = w.addText(item.idea)
-  titleTxt.font = Font.heavySystemFont(16)
+  let fontSize = 18
+  if (item.idea.length > 30) {
+    fontSize = fontSize - 3
+  }
+  titleTxt.font = Font.heavySystemFont(fontSize)
   w.addSpacer(8)
 
   let authorTxt = w.addText(item.author)
