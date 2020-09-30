@@ -1,8 +1,5 @@
-
 let item = await loadItem()
-let imgURL = null
-let isDarkMode = Device.isUsingDarkAppearance()
-let widget = await createWidget(item, imgURL, isDarkMode)
+let widget = await createWidget(item)
 
 if (!config.runsInWidget) {
   await widget.presentMedium()
@@ -11,25 +8,17 @@ if (!config.runsInWidget) {
 Script.setWidget(widget)
 Script.complete()
 
-async function createWidget(item, gif, isDarkMode) {
-  let author = item.author
+async function createWidget(item) {
   let w = new ListWidget()
-
-  if (gif != null) {
-    let imgReq = new Request(gif)
-    let img = await imgReq.loadImage()
-    w.backgroundImage = img
-  }
-
   let tagText = w.addText(item.tag)
   tagText.font = Font.boldRoundedSystemFont(12)
-  w.addSpacer()
+  w.addSpacer(4)
 
   let titleTxt = w.addText(item.idea)
-  titleTxt.font = Font.boldSystemFont(16)
+  titleTxt.font = Font.boldSystemFont(14)
   w.addSpacer(8)
 
-  let authorTxt = w.addText(author)
+  let authorTxt = w.addText(item.author)
   authorTxt.font = Font.mediumSystemFont(12)
   authorTxt.textOpacity = 0.9
   authorTxt.rightAlignText()
@@ -39,20 +28,27 @@ async function createWidget(item, gif, isDarkMode) {
   introTxt.font = Font.mediumSystemFont(12)
   introTxt.textOpacity = 0.9
   introTxt.rightAlignText()
-  w.addSpacer()
+  w.addSpacer(8)
 
-  if (isDarkMode) {
+  let curatorText = w.addText("由 " + item.curator + " 提供")
+  curatorText.font = Font.mediumSystemFont(10)
+  curatorText.textOpacity = 0.5
+  curatorText.rightAlignText()
+
+  if (Device.isUsingDarkAppearance()) {
     w.backgroundColor = Color.black()
     titleTxt.textColor = Color.white()
     tagText.textColor = Color.green()
     authorTxt.textColor = Color.lightGray()
     introTxt.textColor = Color.lightGray()
+    curatorText.textColor = Color.lightGray()
   } else {
     w.backgroundColor = Color.white()
     titleTxt.textColor = Color.black()
     tagText.textColor = Color.green()
     authorTxt.textColor = Color.darkGray()
     introTxt.textColor = Color.darkGray()
+    curatorText.textColor = Color.darkGray()
   }
   w.url = item.url
   return w
