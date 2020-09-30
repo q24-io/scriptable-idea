@@ -22,17 +22,17 @@ async function createWidget(item, gif) {
   w.addSpacer(4)
 
   let titleTxt = w.addText(item.idea)
-  titleTxt.font = Font.mediumSystemFont(14)
+  titleTxt.font = Font.heavySystemFont(14)
   w.addSpacer(8)
 
   let authorTxt = w.addText(item.author)
-  authorTxt.font = Font.lightRoundedSystemFont(12)
+  authorTxt.font = Font.mediumSystemFont(12)
   authorTxt.textOpacity = 0.9
   authorTxt.rightAlignText()
   w.addSpacer(2)
 
   let introTxt = w.addText(item.intro)
-  introTxt.font = Font.lightRoundedSystemFont(12)
+  introTxt.font = Font.mediumSystemFont(12)
   introTxt.textOpacity = 0.9
   introTxt.rightAlignText()
   w.addSpacer(8)
