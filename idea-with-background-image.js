@@ -1,5 +1,5 @@
 let item = await loadItem()
-let imgURL = "https://picsum.photos/500?blur=3"
+let imgURL = "https://picsum.photos/1000?blur=3"
 let widget = await createWidget(item, imgURL)
 if (!config.runsInWidget) {
   await widget.presentLarge()
@@ -22,7 +22,7 @@ async function createWidget(item, gif) {
   w.addSpacer(4)
 
   let titleTxt = w.addText(item.idea)
-  titleTxt.font = Font.heavySystemFont(14)
+  titleTxt.font = Font.heavySystemFont(16)
   w.addSpacer(8)
 
   let authorTxt = w.addText(item.author)
