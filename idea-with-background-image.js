@@ -1,5 +1,5 @@
 let item = await loadItem()
-let imgURL = "https://picsum.photos/1000?blur=3"
+let imgURL = "https://picsum.photos/1000?blur=2"
 let widget = await createWidget(item, imgURL)
 if (!config.runsInWidget) {
   await widget.presentLarge()
@@ -22,9 +22,12 @@ async function createWidget(item, gif) {
   w.addSpacer(4)
 
   let titleTxt = w.addText(item.idea)
-  let fontSize = 18
-  if (item.idea.length > 30) {
-    fontSize = fontSize - 3
+  let fontSize = 16
+  if (item.idea.length > 60) {
+    fontSize = fontSize - 2
+  }
+  if (item.idea.length < 20) {
+    fontSize = fontSize + 2
   }
   titleTxt.font = Font.heavySystemFont(fontSize)
   w.addSpacer(8)
@@ -47,11 +50,18 @@ async function createWidget(item, gif) {
   curatorText.rightAlignText()
 
   titleTxt.textColor = Color.white()
+  titleTxt.shadowRadius = 1
   tagText.textColor = Color.green()
+  tagText.shadowRadius = 1
   authorTxt.textColor = Color.white()
+  authorTxt.shadowRadius = 1
   introTxt.textColor = Color.white()
+  introTxt.shadowRadius = 1
   curatorText.textColor = Color.white()
-  w.url = item.url
+  curatorText.shadowRadius = 1
+
+  titleTxt.url = item.url
+  curatorText.url = item.curator_link
   return w
 }
 
@@ -61,3 +71,4 @@ async function loadItem() {
   let json = await req.loadJSON()
   return json
 }
+
